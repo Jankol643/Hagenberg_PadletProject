@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PadletController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/', [PadletController::class, 'index']);
+Route::get('/padlets', [PadletController::class, 'index']);
+Route::get('/padlets/{id}', [PadletController::class, 'findById']);
+Route::get('/padlets/search/{searchTerm}', [PadletController::class, 'findBySearchTerm']);
+
+Route::post('/padlets', [PadletController::class, 'save']);
+Route::put('/padlets/{id}', [PadletController::class, 'update']);
+Route::delete('/padlets/{id}', [PadletController::class,'delete']);

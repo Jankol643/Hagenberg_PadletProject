@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Padlet;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PadletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
