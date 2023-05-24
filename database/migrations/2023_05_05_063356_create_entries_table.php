@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('entries', function (Blueprint $table) {
             $table->id();
             $table->string('entryText');
-            $table->integer('rating')->default('1');
 
             // fk field - Fremdschlüsselbeziehung zu Padlet-Id
             $table->bigInteger('padlet_id')->unsigned();

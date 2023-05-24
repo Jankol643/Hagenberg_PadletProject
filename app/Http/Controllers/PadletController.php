@@ -50,10 +50,11 @@ class PadletController extends Controller {
             if (isset($request['entries']) && is_array($request['entries'])) {
                 foreach ($request['entries'] as $entry) {
                     $entry = Entry::firstOrNew([
-                        'entryText' => $entry['entryText'],
-                        'rating' => $entry['rating']
+                        'entryText' => $entry['entryText']
                     ]);
                     $padlet->entries()->save($entry);
+
+
                 }
             }
             DB::commit();
@@ -77,12 +78,12 @@ class PadletController extends Controller {
                 if (isset($request['entries']) && is_array($request['entries'])) {
                     foreach ($request['entries'] as $entryIndex) {
                         $entry = Entry::firstOrNew([
-                            'entryText' => $entryIndex['entryText'],
-                            'rating' => $entryIndex['rating']
+                            'entryText' => $entryIndex['entryText']
                         ]);
                         $padlet->entries()->save($entry);
                     }
                 }
+
                 $padlet->save();
             }
             DB::commit();

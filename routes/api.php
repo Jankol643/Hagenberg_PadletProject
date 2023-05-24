@@ -26,7 +26,10 @@ Route::get('/', [PadletController::class, 'index']);
 Route::get('/padlets', [PadletController::class, 'index']);
 Route::get('/padlets/{id}', [PadletController::class, 'findById']);
 Route::get('/padlets/search/{searchTerm}', [PadletController::class, 'findBySearchTerm']);
-
 Route::post('/padlets', [PadletController::class, 'save']);
-Route::put('/padlets/{id}', [PadletController::class, 'update']);
-Route::delete('/padlets/{id}', [PadletController::class,'delete']);
+
+Route::group(['middleware' => ['api', 'auth.jwt']], function() {
+    Route::put('/padlets/{id}', [PadletController::class, 'update']);
+    Route::delete('/padlets/{id}', [PadletController::class,'delete']);
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+});

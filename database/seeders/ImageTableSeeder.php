@@ -18,17 +18,15 @@ class ImageTableSeeder extends Seeder
     {
         $image = new Image();
         $image->url = 'https://images.pexels.com/photos/10276340/pexels-photo-10276340.jpeg?auto=compress&cs=tinysrgb&w=600';
-        $image->title = 'Profilbild Putz';
+        $image->title = 'Profile picture user 1';
 
-        //falsch, weil wird immer User 1 zugewiesen
-        //get user
         $user = User::find(1);
         $image->user()->associate($user);
         $image->save();
 
         $image2 = new Image();
         $image2->url = "https://media.istockphoto.com/id/1317804578/photo/one-businesswoman-headshot-smiling-at-the-camera.jpg?s=612x612&w=0&k=20&c=EqR2Lffp4tkIYzpqYh8aYIPRr-gmZliRHRxcQC5yylY=";
-        $image2->title = "Profile picture user 1";
+        $image2->title = "Profile picture user 2";
 
         $user2 = User::find(2);
         $image2->user()->associate($user2);
